@@ -16,8 +16,8 @@ class CategorySeeder extends Seeder
         Category::factory()
                 ->count(2)
                 ->sequence(
-                    ['name' => 'homme'],
-                    ['name' => 'femme'],
+                    ['name' => 'man'],
+                    ['name' => 'woman'],
                 )
                 ->create();
     }

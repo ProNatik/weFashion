@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quantsizes', function (Blueprint $table) {
             $table->primary(['prod_id', 'size']);
             $table->unsignedBigInteger('prod_id')->nullable(false);
-            $table->string('size', 5)->nullable(false);
+            $table->enum('size', ['XS', 'S', 'M', 'L', 'XL'])->nullable(false);
             $table->bigInteger('quantity')->nullable(false);
 
             //foreign key

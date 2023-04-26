@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/main.css" />
 
-        <title>{{ $title ?? 'myBookmarks' }}</title>
+        <title>{{ $title ?? 'myProducts' }}</title>
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -21,12 +22,25 @@
                         <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bookmark</a>
+                        <a class="nav-link" href="#">Man</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="#">Woman</a>
                     </li>
                 </ul>
+                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    @auth
+                        {{Auth::user()->name}}
+                        <form action="{{route('auth.logout')}}" method="post" class="nav-item">
+                            @method("delete")
+                            @csrf
+                            <button class="nav-link">Se déconnecter</button>
+                        </form>
+                    @endauth
+                    @guest
+                        <a href="{{route('auth.login')}}">Se connecter</a>
+                    @endguest
+                </div>
             </div>
         </nav>
     </header>

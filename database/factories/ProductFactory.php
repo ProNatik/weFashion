@@ -20,8 +20,9 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
-            'price' => $this->faker->numberBetween(1, 50) ,
-            'picture' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'price' => $this->faker->numberBetween(1, 50),
+            'picture' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'state' => $this->faker->randomElement(['on','off']),
             'reference' => Str::random(10),
         ];
     }
