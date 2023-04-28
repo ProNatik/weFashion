@@ -15,7 +15,6 @@ return new class extends Migration
             $table->primary(['prod_id', 'size']);
             $table->unsignedBigInteger('prod_id')->nullable(false);
             $table->enum('size', ['XS', 'S', 'M', 'L', 'XL'])->nullable(false);
-            $table->bigInteger('quantity')->nullable(false);
 
             //foreign key
             $table->foreign('prod_id')->references('id')->on('products')->onDelete('cascade');

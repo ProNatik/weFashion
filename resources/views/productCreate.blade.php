@@ -37,10 +37,6 @@
                 <option value="XL">XL</option>
             </select>
         </div>
-        <div class="mb-3">
-            <label for="quantity" class="form-label">Quantity</label>
-            <input type="number" class="form-control" name="quantity" required>
-        </div>
         <button type="submit" class="btn btn-primary">ADD</button>
     </form>
 @endsection

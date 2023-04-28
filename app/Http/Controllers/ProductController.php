@@ -40,14 +40,13 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = Product::create($request->safe()->except(['size','quantity']));
+        $product = Product::create($request->safe()->except(['size']));
 
         if ($product){
-            $quantSizeValidate = $request->safe()->only(['size','quantity']);
+            $quantSizeValidate = $request->safe()->only(['size']);
             $quantsize = Quantsize::create([
                 'prod_id' => $product->id,
                 'size' => $quantSizeValidate['size'],
-                'quantity' => $quantSizeValidate['quantity'],
             ]);
         }
         return redirect()->route('product.index');
@@ -69,7 +68,7 @@ class ProductController extends Controller
      */
     public function update(Product $product, ProductRequest $request)
     {
-        $product->update($request->safe()->except(['size','quantity']));
+        $product->update($request->safe()->except(['size']));
         return redirect()->route('product.show', $product->id);
     }
 
@@ -78,7 +77,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // dd($product);
         $product->delete();
         return redirect()->route('product.index');
     }

@@ -18,7 +18,6 @@ class QuantsizeFactory extends Factory
     {
         return [
             'size' => $this->faker->randomElement(['XS','S','M','L','XL']),
-            'quantity' => $this->faker->numberBetween(1,50),
         ];
     }
 }

@@ -22,14 +22,17 @@
                         <a class="nav-link" aria-current="page" href="{{route('product.index')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home', 1)}}">Man</a>
+                        <a class="nav-link" href="{{route('filter', 1)}}">Man</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home', 2)}}">Woman</a>
+                        <a class="nav-link" href="{{route('filter', 2)}}">Woman</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('solde')}}">Solde</a>
                     </li>
                     @auth
                     <li class="nav-item" href="#">
-                        <a class="nav-link" href="{{route('product.create')}}">Create</a>
+                        <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
                     </li>
                     @endauth
                 </ul>

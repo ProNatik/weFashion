@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductFilterController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('/product', 'App\Http\Controllers\ProductController');
 Route::resource('/product', ProductController::class);
-Route::get('/prod/{id}', [ProductFilterController::class, 'show'])->name('home');
+Route::get('/prod/{id}', [ProductFilterController::class, 'show'])->name('filter');
+Route::get('/solde', [ProductFilterController::class, 'solde'])->name('solde');
+
+Route::resource('/categories', CategoryController::class);
 
 
 

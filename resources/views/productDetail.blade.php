@@ -11,8 +11,13 @@
         <p class="card-text">{{$product->category->name}}</p>
     </div>
     @auth
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted" style="display:flex">
             <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary">Edit</a>
+            <form action="{{route('product.destroy',['product' => $product] )}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         </div>
     @endauth
   </div>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['man', 'woman'])->nullable(false);
+            $table->string('name')->nullable(false);
         });
     }
 

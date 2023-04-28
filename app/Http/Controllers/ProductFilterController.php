@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -12,6 +13,12 @@ class ProductFilterController extends Controller
     {
         $products = Product::where('category_id', $category)->orderBy('created_at', 'desc')->simplePaginate(6);
         $quantity = Product::where('category_id', $category)->count();
-        return view('home', ['title' => 'myProducts', 'products' => $products, 'quantity' => $quantity]);
+        return view('home', ['title' => 'Products', 'products' => $products, 'quantity' => $quantity]);
+    }
+
+    public function solde(): View
+    {
+        $products = Product::where('state', 'solde')->get();
+        return view('home', ['title' => 'productsSolde', 'products' => $products]);
     }
 }
