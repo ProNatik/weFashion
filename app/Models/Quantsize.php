@@ -10,6 +10,12 @@ class Quantsize extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'prod_id',
+        'size',
+        'quantity',
+    ];
+
     public $timestamps = false;
 
     public function product(): BelongsTo

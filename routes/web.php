@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductFilterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ProductController::class, 'create'])->name('home');
+// Route::resource('/product', 'App\Http\Controllers\ProductController');
+Route::resource('/product', ProductController::class);
+Route::get('/prod/{id}', [ProductFilterController::class, 'show'])->name('home');
 
-Route::get('/login', [AuthController::class, 'create'])->name('auth.login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+
+
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'create'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+});

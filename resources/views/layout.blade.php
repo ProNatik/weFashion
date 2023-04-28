@@ -19,28 +19,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                        <a class="nav-link" aria-current="page" href="{{route('product.index')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Man</a>
+                        <a class="nav-link" href="{{route('home', 1)}}">Man</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Woman</a>
+                        <a class="nav-link" href="{{route('home', 2)}}">Woman</a>
                     </li>
-                </ul>
-                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @auth
-                        {{Auth::user()->name}}
-                        <form action="{{route('auth.logout')}}" method="post" class="nav-item">
-                            @method("delete")
-                            @csrf
-                            <button class="nav-link">Se déconnecter</button>
-                        </form>
+                    <li class="nav-item" href="#">
+                        <a class="nav-link" href="{{route('product.create')}}">Create</a>
+                    </li>
                     @endauth
+                </ul>
+                    @auth
+                    <span class="navbar-text">
+                        {{Auth::user()->name}}
+                    </span>
+                    <form action="{{route('auth.logout')}}" method="post" class="nav-item">
+                        @method("delete")
+                        @csrf
+                        <button class="nav-link">Se déconnecter</button>
+                    </form>
+                    @endauth
+
                     @guest
                         <a href="{{route('auth.login')}}">Se connecter</a>
                     @endguest
-                </div>
             </div>
         </nav>
     </header>

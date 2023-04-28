@@ -1,31 +1,30 @@
 @extends('layout')
 
 @section('main')
-{{-- <a href="{{route('newProduct')}}" class="btn btn-primary float-end">NEW</a> --}}
 <section>
+    <div class="row">
     @foreach($products as $product)
-    <div class="col-10 mx-auto col-sm-6 col-lg-3" style="border: solid 1px black">
-        <p>{{$product->name}}</p>
-        <p>{{$product->category->name}}</p>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{$product->name}}</h5>
+                    <p class="card-text">{{$product->price}}€</p>
+                    <div style="display:flex";>
+                        <a href="{{route('product.show', $product->id)}}" class="btn btn-primary">Details</a>
+                        <form action="{{route('product.destroy',['product' => $product] )}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
 
-    </div>
+                </div>
+            </div>
+        </div>
     @endforeach
+    </div>
+
+    <div><p>{{$quantity}}</p></div>
+    {{$products->links()}}
 </section>
-        {{-- @foreach($products as $product)
-            <tr>
-                <th scope="row">{{ $product->id }}</th>
-                <td><a href="{{ $product->ressource->url }}">{{ $product->title }}</a></td>
-                <td>{{ $product->description }}</td>
-                <td>
-                    <form action="/product/{{ $product->id }}" method="GET">
-                        <button type="submit" class="btn btn-info">UPDATE</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/deleteProduct/{{ $product->id }}" method="DELETE">
-                        <button type="submit" class="btn btn-danger">DELETE</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach --}}
 @endsection

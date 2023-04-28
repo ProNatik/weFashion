@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('product.index'));
         }
 
         return to_route('auth.login')->withErrors([
@@ -27,9 +27,11 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return to_route('auth.login');
     }
 }

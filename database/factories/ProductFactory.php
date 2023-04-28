@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->numberBetween(1, 50),
             'picture' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'state' => $this->faker->randomElement(['on','off']),
+            'state' => $this->faker->randomElement(['standard','solde']),
             'reference' => Str::random(10),
         ];
     }

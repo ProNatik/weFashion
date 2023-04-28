@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->float('price')->nullable(false);
             $table->string('picture', 100)->nullable(false);
-            $table->enum('state', ['on', 'off'])->nullable(false);
-            $table->string('reference', 100);
+            $table->enum('state', ['standard', 'solde'])->nullable(false);
+            $table->string('reference', 100)->nullable(true);
             $table->timestamps();
 
             //foreign key
