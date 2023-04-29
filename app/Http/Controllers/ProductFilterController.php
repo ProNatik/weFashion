@@ -18,7 +18,7 @@ class ProductFilterController extends Controller
 
     public function solde(): View
     {
-        $products = Product::where('state', 'solde')->get();
+        $products = Product::where('state', 'solde')->simplePaginate(6);
         return view('home', ['title' => 'productsSolde', 'products' => $products]);
     }
 }

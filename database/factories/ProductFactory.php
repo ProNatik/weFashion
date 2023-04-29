@@ -21,7 +21,14 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->numberBetween(1, 50),
-            'picture' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'picture' => $this->faker->randomElement([
+                '/images/hommes/0706301811_1_1_1.jpg',
+                '/images/hommes/3918402401_1_1_1.jpg',
+                '/images/hommes/4314509658_1_1_1.jpg',
+                '/images/femmes/wxl-_fideler_antic_blue5.jpg',
+                '/images/femmes/wxl-_New_Coleen-006.jpg',
+                '/images/femmes/Wxl-_19PE_juin18_3490.jpg',
+            ]),
             'state' => $this->faker->randomElement(['standard','solde']),
             'reference' => Str::random(10),
         ];

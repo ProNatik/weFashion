@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('main')
-<div class="card text-center">
+<div class="card text-center" style="width:70%; margin: auto">
     <div class="card-header">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="{{$product->picture}}" width="200px" height="420px" alt="Card image cap" style="width: 35%">
     </div>
     <div class="card-body">
         <h5 class="card-title">{{$product->name}}</h5>

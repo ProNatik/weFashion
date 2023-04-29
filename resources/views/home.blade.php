@@ -2,29 +2,38 @@
 
 @section('main')
 @guest
-<section>
+<section style="width:80%; margin: auto; margin-top: 15px; margin-bottonm: 15px; margin-bottom:15px;">
     <div class="row">
     @foreach($products as $product)
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 mx-auto col-lg-3" style="margin: 20px;">
             <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top" src="{{$product->picture}}" alt="Card image cap" height="350px">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
                     <p class="card-text">{{$product->price}}€</p>
-                    <p class="card-text">{{$product->state}}</p>
+                    <div style="display:flex; justify-content: space-between">
+                        <p class="card-text">{{$product->state}}</p>
+                        <a href="{{route('product.show', $product->id)}}" class="btn btn-info">Details</a>
+                    </div>
+
                 </div>
             </div>
         </div>
     @endforeach
     </div>
-
-    <div><p>{{$quantity}}</p></div>
-    {{$products->links()}}
 </section>
+<div style="display:flex; justify-content: center">{{$products->links()}}</div>
 @endguest
 
 @auth
-    <a class="btn btn-primary" href="{{route('product.create')}}">Create</a>
-    <table class="table">
+    <div style="margin: 10px 0px 10px 150px; width:80%; display:flex; justify-content:space-between;">
+        <a class="btn btn-primary" href="{{route('product.create')}}">CREATE</a>
+        <p>Quantity of product : {{$quantity}}</p>
+    </div>
+
+    <table class="table table-striped table-bordered" style="width:80%; margin: auto; margin-bottom:15px;">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -45,18 +54,20 @@
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->state }}</td>
                     <td>
-                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-info">EDIT</a>
                     </td>
                     <td>
                         <form action="{{route('product.destroy',['product' => $product] )}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">DELETE</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <div style="display:flex; justify-content: center">{{$products->links()}}</div>
+
 @endauth
 @endsection
