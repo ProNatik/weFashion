@@ -3,8 +3,8 @@
 @section('main')
 @auth
 
-    <a class="btn btn-primary" href="{{route('categories.create')}}">Create</a>
-    <table class="table">
+    <a class="btn btn-primary" href="{{route('categories.create')}}" style="margin: 10px 0px 10px 150px;">Create</a>
+    <table class="table table-striped table-bordered" style="width:80%; margin: auto; margin-bottom:15px;">
         <thead>
             <tr>
                 <th scope="col">Id</th>

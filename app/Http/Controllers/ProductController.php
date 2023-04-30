@@ -16,6 +16,7 @@ class ProductController extends Controller
         $products = Product::with('category')->orderBy('created_at', 'desc')->simplePaginate(6);
         $quantity = Product::with('category')->count();
 
+
         return view('home', ['title' => 'myProducts', 'products' => $products, 'quantity' => $quantity]);
     }
 

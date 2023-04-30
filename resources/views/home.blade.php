@@ -17,7 +17,6 @@
                         <p class="card-text">{{$product->state}}</p>
                         <a href="{{route('product.show', $product->id)}}" class="btn btn-info">Details</a>
                     </div>
-
                 </div>
             </div>
         </div>

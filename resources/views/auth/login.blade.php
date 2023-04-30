@@ -3,8 +3,8 @@
 @section('main')
 
 <section>
-    <h1>Se connecter</h1>
-    <div class="card">
+    <h1 style="margin: 10px 0px 10px 150px;">Se connecter</h1>
+    <div class="card" style="width: 50%; margin: auto">
         <div class="card-body">
             <form action="{{route('auth.login')}}" method="post" class="vstack gap-3">
                 @csrf

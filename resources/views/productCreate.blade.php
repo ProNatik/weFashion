@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('main')
-    <form action="{{route('product.store')}}" method="post">
+    <form action="{{route('product.store')}}" method="post" style="width: 80%; margin: auto; margin-top:15px;">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -28,7 +28,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="size" class="form-label">Sizes</label>
+            <label for="size" class="form-label">Size</label>
             <select id="size" class="form-select" name="size">
                 <option value="XS">XS</option>
                 <option value="S">S</option>
